@@ -1,6 +1,6 @@
 /**
  * @toast-ui/editor
- * @version 3.1.8 | Mon Jun 20 2022
+ * @version 3.1.8 | Sat Jun 25 2022
  * @author NHN Cloud FE Development Lab <dl_javascript@nhn.com>
  * @license MIT
  */
@@ -24986,15 +24986,24 @@ var Popup = /** @class */ (function (_super) {
                 !closest(ev.target, _this.props.info.fromEl)) {
                 _this.props.hidePopup();
             }
+            else {
+                ev.stopPropagation();
+            }
         };
         return _this;
     }
     Popup.prototype.mounted = function () {
         this.props.document.addEventListener('mousedown', this.handleMousedown);
+        if (this.props.document !== window.document) {
+            window.document.addEventListener('mousedown', this.props.hidePopup);
+        }
         this.props.eventEmitter.listen('closePopup', this.props.hidePopup);
     };
     Popup.prototype.beforeDestroy = function () {
         this.props.document.removeEventListener('mousedown', this.handleMousedown);
+        if (this.props.document !== window.document) {
+            window.document.removeEventListener('mousedown', this.props.hidePopup);
+        }
     };
     Popup.prototype.updated = function (prevProps) {
         var _a = this.props, show = _a.show, info = _a.info;
@@ -25201,11 +25210,16 @@ var DropdownToolbarButtonComp = /** @class */ (function (_super) {
     __extends$1(DropdownToolbarButtonComp, _super);
     function DropdownToolbarButtonComp(props) {
         var _this = _super.call(this, props) || this;
-        _this.handleClickDocument = function (_a) {
-            var target = _a.target;
-            if (!closest(target, "." + cls('dropdown-toolbar')) &&
-                !closest(target, '.more')) {
-                _this.setState({ showDropdown: false, dropdownPos: null });
+        _this.resetDropdown = function () {
+            _this.setState({ showDropdown: false, dropdownPos: null });
+        };
+        _this.handleClickDocument = function (ev) {
+            if (!closest(ev.target, "." + cls('dropdown-toolbar')) &&
+                !closest(ev.target, '.more')) {
+                _this.resetDropdown();
+            }
+            else {
+                ev.stopPropagation();
             }
         };
         _this.showTooltip = function () {
@@ -25221,6 +25235,9 @@ var DropdownToolbarButtonComp = /** @class */ (function (_super) {
     };
     DropdownToolbarButtonComp.prototype.mounted = function () {
         this.props.document.addEventListener('click', this.handleClickDocument);
+        if (this.props.document !== window.document) {
+            window.document.addEventListener('click', this.resetDropdown);
+        }
     };
     DropdownToolbarButtonComp.prototype.updated = function () {
         if (this.state.showDropdown && !this.state.dropdownPos) {
@@ -25229,6 +25246,9 @@ var DropdownToolbarButtonComp = /** @class */ (function (_super) {
     };
     DropdownToolbarButtonComp.prototype.beforeDestroy = function () {
         this.props.document.removeEventListener('click', this.handleClickDocument);
+        if (this.props.document !== window.document) {
+            window.document.removeEventListener('click', this.resetDropdown);
+        }
     };
     DropdownToolbarButtonComp.prototype.render = function () {
         var _this = this;
@@ -25477,9 +25497,15 @@ var ContextMenu = /** @class */ (function (_super) {
     __extends$1(ContextMenu, _super);
     function ContextMenu(props) {
         var _this = _super.call(this, props) || this;
+        _this.resetPos = function () {
+            _this.setState({ pos: null });
+        };
         _this.handleClickDocument = function (ev) {
             if (!closest(ev.target, "." + cls('context-menu'))) {
-                _this.setState({ pos: null });
+                _this.resetPos();
+            }
+            else {
+                ev.stopPropagation();
             }
         };
         _this.state = {
@@ -25498,9 +25524,15 @@ var ContextMenu = /** @class */ (function (_super) {
     };
     ContextMenu.prototype.mounted = function () {
         this.props.document.addEventListener('click', this.handleClickDocument);
+        if (this.props.document !== window.document) {
+            window.document.addEventListener('click', this.resetPos);
+        }
     };
     ContextMenu.prototype.beforeDestroy = function () {
         this.props.document.removeEventListener('click', this.handleClickDocument);
+        if (this.props.document !== window.document) {
+            window.document.removeEventListener('click', this.resetPos);
+        }
     };
     ContextMenu.prototype.getMenuGroupElements = function () {
         var _this = this;
