@@ -1452,7 +1452,7 @@ var isArray = __webpack_require__(322);
  * @example
  * // ES6
  * import inArray from 'tui-code-snippet/array/inArray';
- * 
+ *
  * // CommonJS
  * const inArray = require('tui-code-snippet/array/inArray');
  *
@@ -1521,10 +1521,10 @@ var forEachOwnProperties = __webpack_require__(956);
  * @memberof module:collection
  * @example
  * // ES6
- * import forEach from 'tui-code-snippet/collection/forEach'; 
- * 
+ * import forEach from 'tui-code-snippet/collection/forEach';
+ *
  * // CommonJS
- * const forEach = require('tui-code-snippet/collection/forEach'); 
+ * const forEach = require('tui-code-snippet/collection/forEach');
  *
  * let sum = 0;
  *
@@ -1578,9 +1578,9 @@ module.exports = forEach;
  * @example
  * // ES6
  * import forEachArray from 'tui-code-snippet/collection/forEachArray';
- * 
+ *
  * // CommonJS
- * const forEachArray = require('tui-code-snippet/collection/forEachArray'); 
+ * const forEachArray = require('tui-code-snippet/collection/forEachArray');
  *
  * let sum = 0;
  *
@@ -1632,9 +1632,9 @@ module.exports = forEachArray;
  * @example
  * // ES6
  * import forEachOwnProperties from 'tui-code-snippet/collection/forEachOwnProperties';
- * 
+ *
  * // CommonJS
- * const forEachOwnProperties = require('tui-code-snippet/collection/forEachOwnProperties'); 
+ * const forEachOwnProperties = require('tui-code-snippet/collection/forEachOwnProperties');
  *
  * let sum = 0;
  *
@@ -1683,10 +1683,10 @@ var forEachArray = __webpack_require__(893);
  * @memberof module:collection
  * @example
  * // ES6
- * import toArray from 'tui-code-snippet/collection/toArray'; 
- * 
+ * import toArray from 'tui-code-snippet/collection/toArray';
+ *
  * // CommonJS
- * const toArray = require('tui-code-snippet/collection/toArray'); 
+ * const toArray = require('tui-code-snippet/collection/toArray');
  *
  * const arrayLike = {
  *   0: 'one',
@@ -1785,21 +1785,21 @@ var safeEvent = __webpack_require__(755);
  * @memberof module:domEvent
  * @example
  * // Following the example of domEvent#on
- * 
+ *
  * // Unbind one event from an element.
  * off(div, 'click', toggle);
- * 
+ *
  * // Unbind multiple events with a same handler from multiple elements at once.
  * // Use event names splitted by a space.
  * off(element, 'mouseenter mouseleave', changeColor);
- * 
+ *
  * // Unbind multiple events with different handlers from an element at once.
  * // Use an object which of key is an event name and value is a handler function.
  * off(div, {
  *   keydown: highlight,
  *   keyup: dehighlight
  * });
- * 
+ *
  * // Unbind events without handlers.
  * off(div, 'drag');
  */
@@ -1894,21 +1894,21 @@ var safeEvent = __webpack_require__(755);
  * @memberof module:domEvent
  * @example
  * const div = document.querySelector('div');
- * 
+ *
  * // Bind one event to an element.
  * on(div, 'click', toggle);
- * 
+ *
  * // Bind multiple events with a same handler to multiple elements at once.
  * // Use event names splitted by a space.
  * on(div, 'mouseenter mouseleave', changeColor);
- * 
+ *
  * // Bind multiple events with different handlers to an element at once.
  * // Use an object which of key is an event name and value is a handler function.
  * on(div, {
  *   keydown: highlight,
  *   keyup: dehighlight
  * });
- * 
+ *
  * // Set a context for handler method.
  * const name = 'global';
  * const repository = {name: 'CodeSnippet'};
@@ -2366,7 +2366,7 @@ var forEachOwnProperties = __webpack_require__(956);
  * @example
  * // ES6
  * import imagePing from 'tui-code-snippet/request/imagePing';
- * 
+ *
  * // CommonJS
  * const imagePing = require('tui-code-snippet/request/imagePing');
  *
@@ -2502,7 +2502,7 @@ module.exports = sendHostname;
  * @example
  * // ES6
  * import debounce from 'tui-code-snippet/tricks/debounce';
- * 
+ *
  * // CommonJS
  * const debounce = require('tui-code-snippet/tricks/debounce');
  *
@@ -2567,7 +2567,7 @@ var debounce = __webpack_require__(516);
  * @example
  * // ES6
  * import throttle from 'tui-code-snippet/tricks/throttle';
- * 
+ *
  * // CommonJS
  * const throttle = require('tui-code-snippet/tricks/throttle');
  *
@@ -2720,7 +2720,7 @@ var isNull = __webpack_require__(934);
  * @example
  * // ES6
  * import isExisty from 'tui-code-snippet/type/isExisty');
- * 
+ *
  * // CommonJS
  * const isExisty = require('tui-code-snippet/type/isExisty');
  *
@@ -2965,7 +2965,7 @@ module.exports = isUndefined;
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -2979,14 +2979,14 @@ module.exports = isUndefined;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	!function() {
@@ -2999,7 +2999,7 @@ module.exports = isUndefined;
 /******/ 			return getter;
 /******/ 		};
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -3011,7 +3011,7 @@ module.exports = isUndefined;
 /******/ 			}
 /******/ 		};
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	!function() {
 /******/ 		__webpack_require__.g = (function() {
@@ -3023,12 +3023,12 @@ module.exports = isUndefined;
 /******/ 			}
 /******/ 		})();
 /******/ 	}();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	!function() {
 /******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
 /******/ 	}();
-/******/ 	
+/******/
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -25388,7 +25388,7 @@ var __importDefault$2 = (commonjsGlobal && commonjsGlobal.__importDefault) || fu
 Object.defineProperty(decode_codepoint, "__esModule", { value: true });
 var decode_json_1 = __importDefault$2(require$$0);
 // Adapted from https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
-var fromCodePoint$2 = 
+var fromCodePoint$2 =
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 String.fromCodePoint ||
     function (codePoint) {
@@ -25544,7 +25544,7 @@ function getInverseReplacer(inverse) {
 }
 // /[^\0-\x7F]/gu
 var reNonASCII = /(?:[\x80-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])/g;
-var getCodePoint = 
+var getCodePoint =
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 String.prototype.codePointAt != null
     ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
