@@ -15,6 +15,7 @@ interface Props {
   eventEmitter: Emitter;
   hidePopup: HidePopup;
   execCommand: ExecCommand;
+  document: Document;
 }
 
 interface State {
@@ -30,16 +31,24 @@ export class Popup extends Component<Props, State> {
       !closest(ev.target as HTMLElement, this.props.info.fromEl)
     ) {
       this.props.hidePopup();
+    } else {
+      ev.stopPropagation();
     }
   };
 
   mounted() {
-    document.addEventListener('mousedown', this.handleMousedown);
+    this.props.document.addEventListener('mousedown', this.handleMousedown);
+    if (this.props.document !== window.document) {
+      window.document.addEventListener('mousedown', this.props.hidePopup);
+    }
     this.props.eventEmitter.listen('closePopup', this.props.hidePopup);
   }
 
   beforeDestroy() {
-    document.removeEventListener('mousedown', this.handleMousedown);
+    this.props.document.removeEventListener('mousedown', this.handleMousedown);
+    if (this.props.document !== window.document) {
+      window.document.removeEventListener('mousedown', this.props.hidePopup);
+    }
   }
 
   updated(prevProps: Props) {

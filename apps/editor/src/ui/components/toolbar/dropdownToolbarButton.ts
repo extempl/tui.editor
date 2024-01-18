@@ -24,6 +24,7 @@ interface Props {
   showTooltip: ShowTooltip;
   hideTooltip: HideTooltip;
   getBound: GetBound;
+  document: Document;
 }
 
 interface State {
@@ -47,17 +48,26 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
     return { ...rect, left: null, right: 10 };
   }
 
-  private handleClickDocument = ({ target }: MouseEvent) => {
+  private resetDropdown = () => {
+    this.setState({ showDropdown: false, dropdownPos: null });
+  };
+
+  private handleClickDocument = (ev: MouseEvent) => {
     if (
-      !closest(target as HTMLElement, `.${cls('dropdown-toolbar')}`) &&
-      !closest(target as HTMLElement, '.more')
+      !closest(ev.target as HTMLElement, `.${cls('dropdown-toolbar')}`) &&
+      !closest(ev.target as HTMLElement, '.more')
     ) {
-      this.setState({ showDropdown: false, dropdownPos: null });
+      this.resetDropdown();
+    } else {
+      ev.stopPropagation();
     }
   };
 
   mounted() {
-    document.addEventListener('click', this.handleClickDocument);
+    this.props.document.addEventListener('click', this.handleClickDocument);
+    if (this.props.document !== window.document) {
+      window.document.addEventListener('click', this.resetDropdown);
+    }
   }
 
   updated() {
@@ -67,7 +77,10 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
   }
 
   beforeDestroy() {
-    document.removeEventListener('click', this.handleClickDocument);
+    this.props.document.removeEventListener('click', this.handleClickDocument);
+    if (this.props.document !== window.document) {
+      window.document.removeEventListener('click', this.resetDropdown);
+    }
   }
 
   private showTooltip = () => {
